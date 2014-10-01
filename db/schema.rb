@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140930225424) do
+ActiveRecord::Schema.define(version: 20141001000633) do
 
   create_table "song_histories", force: true do |t|
     t.string   "proto_name"
@@ -25,6 +25,18 @@ ActiveRecord::Schema.define(version: 20140930225424) do
     t.string   "song"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "user_histories", force: true do |t|
+    t.integer "user_id"
+    t.integer "song_history_id"
+  end
+
+  add_index "user_histories", ["song_history_id"], name: "index_user_histories_on_song_history_id"
+  add_index "user_histories", ["user_id"], name: "index_user_histories_on_user_id"
+
+  create_table "users", force: true do |t|
+    t.string "name"
   end
 
 end
