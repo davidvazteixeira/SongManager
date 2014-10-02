@@ -9,6 +9,8 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 
+gem 'capybara'
+
 # gem 'bcrypt', '~> 3.1.7'
 # gem 'unicorn'
 # gem 'capistrano-rails', group: :development
@@ -18,3 +20,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
   gem 'shoulda-matchers', require: false
 end
+
+gem 'simple_form'
+gem 'database_cleaner'
