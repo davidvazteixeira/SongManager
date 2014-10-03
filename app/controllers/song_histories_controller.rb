@@ -1,5 +1,9 @@
 class SongHistoriesController < ApplicationController
 
+  def index
+    @song_histories = SongHistory.all
+  end
+
   def new
     @song_history = SongHistory.new
   end
