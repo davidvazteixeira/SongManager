@@ -21,4 +21,17 @@ describe 'SongHistory CRUD' do
     end
   end
 
+  context 'edit' do
+    let!(:song_histories) { create_list(:song_history, 5) }
+    it 'should rename a song history' do
+      (1..5).each do |sh|
+        visit edit_song_history_path(sh)
+        fill_in 'song_history_proto_name', :with => "SHNew#{sh}"
+        click_button 'Update Song history'
+        expect(page).to have_content("SHNew#{sh}")
+      end
+
+    end
+  end
+
 end

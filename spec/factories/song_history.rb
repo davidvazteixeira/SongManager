@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :song_history do
-    sequence(:proto_name) { |n| "SHT-#{n}" }
+    sequence(:proto_name) { |n| "SH-#{n}" }
   end
 end
