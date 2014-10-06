@@ -1,3 +1,7 @@
+
 <% for song_history in @song_histories %>
   <%= song_history.proto_name %>
+
+  <%= link_to 'remove', song_history_path(song_history.id), method: :delete, id: "remove-#{song_history.id}-sh" %>
+
 <% end %>

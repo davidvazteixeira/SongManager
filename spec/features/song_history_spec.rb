@@ -30,7 +30,15 @@ describe 'SongHistory CRUD' do
         click_button 'Update Song history'
         expect(page).to have_content("SHNew#{sh}")
       end
+    end
+  end
 
+  context 'remove' do
+    let!(:song_histories) { create_list(:song_history, 5) }
+    it 'should remove a song history' do
+      visit song_histories_path
+      click_link 'remove-1-sh'
+      expect(SongHistory.count).to eq(4)
     end
   end
 

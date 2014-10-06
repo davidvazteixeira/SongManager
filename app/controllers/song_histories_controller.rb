@@ -21,6 +21,11 @@ class SongHistoriesController < ApplicationController
     redirect_to song_histories_path
   end
 
+  def destroy
+    @song_history = SongHistory.destroy(params[:id])
+    redirect_to song_histories_path
+  end
+
   private
 
     def create_params
