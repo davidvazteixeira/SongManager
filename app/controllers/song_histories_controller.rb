@@ -29,6 +29,7 @@ class SongHistoriesController < ApplicationController
 
   def show
     song_history
+    @song_versions = song_history.song_versions
   end
 
   private

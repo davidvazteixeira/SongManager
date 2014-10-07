@@ -1,6 +1,6 @@
 class SongVersionsController < ApplicationController
   def index
-    #@song_versions = SongVersion.find_by
+    @song_versions = song_history.song_versions
   end
 
   def new
@@ -9,15 +9,16 @@ class SongVersionsController < ApplicationController
   end
 
   def create
-    #@song_version = SongVersion.create(create_params)
-    @song_version = SongVersion.new
-    @song_version.name = params[:song_version][:name]
-    @song_version.song_history_id = params[:song_history_id]
-    @song_version.save
+    @song_version = SongVersion.create(create_params)
+    redirect_to song_history_song_versions_path
   end
 
   private
     def create_params
-      params[:song_version].permit(:name, :song_history_id)
+      params.permit(:song_history_id, :song_version)
+    end
+
+    def song_history
+      @song_history ||= SongHistory.find(params[:song_history_id])
     end
 end

@@ -1,2 +1,11 @@
-<%= link_to 'new!', new_song_history_song_version_path(@song_history.id), id: 'new-sv' %>
 <%= @song_history.proto_name %>
+
+<%= link_to 'new!', new_song_history_song_version_path(@song_history.id), id: 'new-sv' %>
+
+<ol>
+  <% @song_versions.each do |s| %>
+    <li>
+      <%= "version-#{s.song_history_id}-#{s.id}-" %>
+    </li>
+  <% end %>
+</ol>
