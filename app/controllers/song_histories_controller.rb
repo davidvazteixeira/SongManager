@@ -10,10 +10,11 @@ class SongHistoriesController < ApplicationController
 
   def create
     @song_history = SongHistory.create(create_params)
+    redirect_to song_histories_path
   end
 
   def edit
-    @song_history = SongHistory.find(params[:id])
+    song_history
   end
 
   def update
@@ -26,7 +27,15 @@ class SongHistoriesController < ApplicationController
     redirect_to song_histories_path
   end
 
+  def show
+    song_history
+  end
+
   private
+
+    def song_history
+      @song_history ||= SongHistory.find(params[:id])
+    end
 
     def create_params
       params[:song_history].permit(:proto_name)

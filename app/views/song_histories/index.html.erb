@@ -1,7 +1,18 @@
+<nav>
+  <%= link_to 'New!', new_song_history_path %>
+</nav>
 
-<% for song_history in @song_histories %>
-  <%= song_history.proto_name %>
+<ol>
+  <% for song_history in @song_histories %>
+    <li>
+      <%= link_to song_history.proto_name,
+          song_history_path(song_history.id),
+          id: "show-#{song_history.id}-sh" %>
 
-  <%= link_to 'remove', song_history_path(song_history.id), method: :delete, id: "remove-#{song_history.id}-sh" %>
-
-<% end %>
+      <%= link_to 'remove',
+          song_history_path(song_history.id),
+          method: :delete,
+          id: "remove-#{song_history.id}-sh" %>
+    </li>
+  <% end %>
+</ol>
