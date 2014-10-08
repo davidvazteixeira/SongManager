@@ -14,7 +14,21 @@ class SongVersionsController < ApplicationController
   end
 
   def show
+    song_version
+  end
+
+  def edit
+    song_history
+    song_version
+  end
+
+  def update
     @song_version = SongVersion.find(params[:id])
+    @song_version.name = params[:song_version][:name]
+    @song_version.song_history_id = params[:song_history_id]
+    @song_version.save
+
+    redirect_to song_history_song_version_path(params[:song_history_id], params[:id])
   end
 
   private
@@ -22,7 +36,16 @@ class SongVersionsController < ApplicationController
       params.permit(:song_history_id, :song_version)
     end
 
+    def update_params
+      params.permit(:song_history_id, :song_version)
+    end
+
     def song_history
       @song_history ||= SongHistory.find(params[:song_history_id])
     end
+
+    def song_version
+      @song_version ||= SongVersion.find(params[:id])
+    end
+
 end

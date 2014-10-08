@@ -36,11 +36,20 @@ RSpec.describe 'SongVersion CRUD' do
       visit song_history_song_version_path(1, 1)
       expect(page).to have_content("version-1-1-")
       expect(page).to have_content("filestring")
-
     end
   end
   context 'Edit' do
-    it 'should edit a song version item'
+    it 'should edit a song version item' do
+      song_history = SongHistory.create(proto_name: "History")
+      song_version = SongVersion.create(name: "version-1-1-", song: "filestring", song_history_id: 1)
+
+      visit edit_song_history_song_version_path(1, 1)
+      #expect(page).to have_content('version-1-1-')
+      fill_in 'song_version_name', :with => 'MOD-1-1-'
+      click_button 'Update Song version'
+      expect(page).to have_content('MOD-1-1-')
+    end
+
     it 'should warn if not the last song version'
   end
   context 'Remove' do
