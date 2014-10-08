@@ -1,12 +1,16 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.1.5'
-gem 'sqlite3'
+gem 'sqlite3', '~> 1.3.9'
+
+gem 'bootstrap-sass', '~> 3.2'
+gem 'autoprefixer-rails', '~> 3.1'
 gem 'sass-rails', '~> 4.0.3'
-gem 'uglifier', '>= 1.3.0'
+
+gem 'uglifier', '~> 2.5'
 gem 'coffee-rails', '~> 4.0.0'
 
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 3.1'
 gem 'jbuilder', '~> 2.0'
 
 
