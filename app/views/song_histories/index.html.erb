@@ -1,10 +1,10 @@
-<nav>
+<nav class="navbar navbar-default" role="navigation">
   <%= link_to 'New!', new_song_history_path %>
 </nav>
 
-<ol>
+<ol class="list-group">
   <% for song_history in @song_histories %>
-    <li>
+    <li class="list-group-item">
       <%= link_to song_history.proto_name,
           song_history_path(song_history.id),
           id: "show-#{song_history.id}-sh" %>
