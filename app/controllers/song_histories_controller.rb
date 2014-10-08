@@ -28,8 +28,8 @@ class SongHistoriesController < ApplicationController
   end
 
   def show
-    song_history
-    @song_versions = song_history.song_versions
+    @song_history = SongHistory.find(params[:id])
+    @song_versions = @song_history.song_versions
   end
 
   private
