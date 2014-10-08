@@ -29,7 +29,15 @@ RSpec.describe 'SongVersion CRUD' do
   end
 
   context 'Show' do
-    it 'should show a song version items'
+    it 'should show a song version items' do
+      song_history = SongHistory.create(proto_name: "History")
+      song_version = SongVersion.create(name: "version-1-1-", song: "filestring", song_history_id: 1)
+
+      visit song_history_song_version_path(1, 1)
+      expect(page).to have_content("version-1-1-")
+      expect(page).to have_content("filestring")
+
+    end
   end
   context 'Edit' do
     it 'should edit a song version item'

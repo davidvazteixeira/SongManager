@@ -13,6 +13,10 @@ class SongVersionsController < ApplicationController
     redirect_to song_history_song_versions_path
   end
 
+  def show
+    @song_version = SongVersion.find(params[:id])
+  end
+
   private
     def create_params
       params.permit(:song_history_id, :song_version)
