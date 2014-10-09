@@ -41,14 +41,13 @@ RSpec.describe 'SongHistory CRUD' do
   end
 
   context 'Edit' do
-    let!(:song_histories) { create_list(:song_history, 5) }
+    let!(:song_history) { create(:song_history) }
     it 'should rename a song history' do
-      song_histories.each do |sh|
-        visit edit_song_history_path(sh)
-        fill_in 'song_history_proto_name', :with => "SHNew#{sh}"
-        click_button 'Update Song history'
-        expect(page).to have_content("SHNew#{sh}")
-      end
+      visit edit_song_history_path(song_history)
+      new_song_version_name = "SHNew#{song_history.id}"
+      fill_in 'song_history_proto_name', :with => new_song_version_name
+      click_button 'Update Song history'
+      expect(page).to have_content(new_song_version_name)
     end
   end
 
