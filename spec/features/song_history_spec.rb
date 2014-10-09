@@ -23,11 +23,18 @@ RSpec.describe 'SongHistory CRUD' do
   end
 
   context 'Show' do
-    let!(:song_histories) { create_list(:song_history, 5) }
+    let!(:song_history) { create(:song_history) }
+    let!(:song_versions) { create_list(:song_version, 5, song_history: song_history) }
+
     it 'should show the song proto-name' do
-      song_histories.each do |s|
-        visit song_history_path(s)
-        expect(page).to have_content(s.proto_name)
+      visit song_history_path(song_history)
+      expect(page).to have_content(song_history.proto_name)
+    end
+
+    it 'should list all the song versions' do
+      visit song_history_path(song_history)
+      for song_version in song_versions
+        expect(page).to have_content(song_version.name)
       end
     end
 
