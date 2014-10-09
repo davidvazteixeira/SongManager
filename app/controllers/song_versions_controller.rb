@@ -9,8 +9,9 @@ class SongVersionsController < ApplicationController
   end
 
   def create
+    puts params
     @song_version = SongVersion.create(create_params)
-    redirect_to song_history_song_versions_path
+    redirect_to song_history_path(song_history)
   end
 
   def show
@@ -33,7 +34,7 @@ class SongVersionsController < ApplicationController
 
   private
     def create_params
-      params.permit(:song_history_id, :song_version)
+      params.permit( song_version: [:name], :song_history_id )
     end
 
     def update_params

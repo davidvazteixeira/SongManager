@@ -5,14 +5,15 @@ RSpec.describe 'SongVersion CRUD' do
   let!(:song_histories) { create_list(:song_history, 5) }
 
   context 'Create' do
-    it 'should create a new song version' do
-      SongHistory.create(proto_name: "History")
-      visit song_history_path(1)
-      click_link 'new-sv'
-      fill_in 'song_version_name', :with => "version-1-1-"
-      click_button 'Create Song version'
-      expect(SongVersion.count).to eq(1)
-    end
+    let!(:song_history) { create(:song_history) }
+      it 'should create a new song version' do
+        visit song_history_path(song_history)
+        click_link 'new-sv'
+        fill_in 'song_version_name', :with => "Version_name"
+        click_button 'Create Song version'
+        expect(page).to have_content("Version_name")
+      end
+
   end
 
   context 'Show' do
@@ -25,6 +26,7 @@ RSpec.describe 'SongVersion CRUD' do
       expect(page).to have_content("filestring")
     end
   end
+
   context 'Edit' do
     it 'should edit a song version item' do
       song_history = SongHistory.create(proto_name: "History")
