@@ -52,11 +52,14 @@ RSpec.describe 'SongHistory CRUD' do
   end
 
   context 'Remove' do
-    let!(:song_histories) { create_list(:song_history, 5) }
+    let!(:song_histories) { create_list(:song_history, 3) }
+    let(:target_song_history) { song_histories[1] }
+    let(:target_song_history_name) { "remove-#{target_song_history.id}-sh" }
+
     it 'should remove a song history' do
       visit song_histories_path
-      click_link 'remove-1-sh'
-      expect(SongHistory.count).to eq(4)
+      click_link target_song_history_name
+      expect(page).to have_no_content(target_song_history.proto_name)
     end
   end
 
