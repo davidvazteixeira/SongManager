@@ -16,3 +16,27 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+ol {
+  margin-bottom: 20px;
+  padding-left: 0;
+}
+
+li {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  margin-bottom: -1px;
+  background-color: white;
+  border: 1px solid #dddddd;
+}
+
+nav {
+  background-color: #f8f8f8;
+  border-color: #e7e7e7;
+  position: relative;
+  min-height: 50px;
+  margin-bottom: 20px;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+}
