@@ -13,7 +13,6 @@ RSpec.describe 'SongVersion CRUD' do
         click_button 'Create Song version'
         expect(page).to have_content("Version_name")
       end
-
   end
 
   context 'Show' do
@@ -38,6 +37,7 @@ RSpec.describe 'SongVersion CRUD' do
       expect(page).to have_content('MOD-1-1-')
     end
   end
+
   context 'Remove' do
     it 'should remove a song version'
   end
