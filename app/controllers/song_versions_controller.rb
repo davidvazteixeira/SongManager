@@ -2,10 +2,6 @@ class SongVersionsController < ApplicationController
 
   respond_to :html
 
-  def index
-    @song_versions = song_versions
-  end
-
   def new
     respond_with @song_version = song_versions.new
   end
@@ -15,12 +11,11 @@ class SongVersionsController < ApplicationController
   end
 
   def show
-    song_version
+    respond_with song_version
   end
 
   def edit
-    song_history
-    song_version
+    respond_with song_version
   end
 
   def update
@@ -46,7 +41,7 @@ class SongVersionsController < ApplicationController
     end
 
     def song_version
-      @song_version ||= SongVersion.find(params[:id])
+      @song_version ||= song_history.song_versions.find(params[:id])
     end
 
     def song_versions
