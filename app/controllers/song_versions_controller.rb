@@ -7,7 +7,7 @@ class SongVersionsController < ApplicationController
   end
 
   def create
-    respond_with song_versions.create(create_params), location: [song_history]
+    respond_with song_versions.create(permited_params), location: [song_history]
   end
 
   def show
@@ -19,21 +19,16 @@ class SongVersionsController < ApplicationController
   end
 
   def update
-    @song_version = SongVersion.find(params[:id])
-    @song_version.name = params[:song_version][:name]
-    @song_version.song_history_id = params[:song_history_id]
-    @song_version.save
+    respond_with song_history, song_versions.update(params[:id], permited_params)
+  end
 
-    redirect_to song_history_song_version_path(params[:song_history_id], params[:id])
+  def destroy
+    respond_with song_version.destroy, location: [@song_history]
   end
 
   private
-    def create_params
+    def permited_params
       params[:song_version].permit(:name)
-    end
-
-    def update_params
-      params.permit(:song_history_id, :song_version)
     end
 
     def song_history

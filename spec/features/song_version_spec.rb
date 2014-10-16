@@ -39,6 +39,14 @@ RSpec.describe 'SongVersion CRUD' do
   end
 
   context 'Remove' do
-    it 'should remove a song version'
+    let!(:song_history) { create(:song_history) }
+    let!(:song_version) { create(:song_version, song_history: song_history) }
+
+    it 'should remove a song version' do
+      visit song_history_song_version_path(song_history, song_version)
+      click_link 'del-sv'
+      visit song_history_path(song_history)
+      expect(page).to have_no_content(song_version.name)
+    end
   end
 end

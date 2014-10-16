@@ -13,7 +13,6 @@ RSpec.describe 'SongHistory CRUD' do
 
   context 'Index' do
     let!(:song_histories) { create_list(:song_history, 5) }
-    # ! é para retirar o atributo lazzy evaluation
     it 'should list all song histories' do
       visit song_histories_path
       song_histories.each do |s|

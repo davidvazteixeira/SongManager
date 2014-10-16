@@ -1,9 +1,8 @@
 <nav>
-  <%#= link_to 'Song Versions', song_history_path(@song_history) %>
+  <%= link_to 'Delete', song_history_song_version_path(@song_history, @song_version), method: :delete, id: 'del-sv' %>
 </nav>
 
 <ol>
   <li><%= @song_version.name %></li>
   <li><%= @song_version.song %></li>
-  <li></li>
 </ol>
